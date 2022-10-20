@@ -15,7 +15,15 @@
     <label> Password </label>
     <input type="password" name="password" placeholder="password"> <br>
 
-      <button type="submit">Login</button>
+    <button formaction="registrationpage.php"> Create a new login</button>
+    <button type="submit">Login</button>
+      
    </form>
 </body>
 </html>
+
+
+<?php 
+include "frontpage.php";
+
+?>
