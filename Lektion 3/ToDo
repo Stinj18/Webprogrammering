@@ -29,8 +29,8 @@ User list
   - A list of all users in the system
   
 Filer der skal være: 
-config.php 
-- PHP uses PDO to connect to the database 
+config.php #
+- PHP uses PDO to connect to the database #
 - Database username and password is configured in config.php 
 
 migration.sql 
