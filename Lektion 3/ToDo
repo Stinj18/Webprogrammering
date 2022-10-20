@@ -11,7 +11,7 @@ Frontpage
   - contains a login form with the fields "username" and "password" 
   - Contains a link to the registration page 
 
-Registration page 
+Registration page @Falster
   - Can be reached without logging in
   - Contains a form for registering a new user
   - Each field in the form is checked using regex
