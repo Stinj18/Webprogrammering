@@ -1,5 +1,5 @@
 <?php 
-session_start();
+session_start(); /*creates a session or resumes the current one based on a session identifier passed via a GET or POST request, or passed via a cookie.*/
 
 if(isset($_SESSION['id']) && isset($_SESSION['user_name'])){
     ?>
