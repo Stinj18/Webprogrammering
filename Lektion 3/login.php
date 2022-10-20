@@ -1,7 +1,7 @@
 /*  https://www.simplilearn.com/tutorials/php-tutorial/php-login-form */
 <?php
 session_start();
-include "db_conn.php";
+include "config.php";
 
 if(isset($_POST['uname']) && isset($_POST['password'])) {
 
