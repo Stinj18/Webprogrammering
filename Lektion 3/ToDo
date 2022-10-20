@@ -33,7 +33,7 @@ config.php #
 - PHP uses PDO to connect to the database #
 - Database username and password is configured in config.php 
 
-migration.sql 
+migration.sql @Falster
   - Put your database in a file named migration.sql – no online databases!
   - Run your migration file in HeidiSQL or similar tool to make sure the script 
     works and that your system works with the database it creates
