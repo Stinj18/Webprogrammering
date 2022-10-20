@@ -11,16 +11,16 @@ Frontpage #
   - contains a login form with the fields "username" and "password"  #
   - Contains a link to the registration page #
 
-Registration page @Falster
+Registration page 
   - Can be reached without logging in
-  - Contains a form for registering a new user
+  - Contains a form for registering a new user #
   - Each field in the form is checked using regex
 
-Upload page 
+Upload page @Malle
   - Can only be reached when logged in
   - Uploads an image, with a header and a description
 
-Image feed 
+Image feed @Falster
   - Can only be reached when logged in
   - Shows all images, headers and descriptions, from any user, along with their username
 
