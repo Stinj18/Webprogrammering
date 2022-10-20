@@ -6,10 +6,10 @@ Skal indeholde:
 Et AJAX call 
 Site is responsive (it scales to different screen sizes) 
 
-Frontpage 
-  - can be reached without logging in 
-  - contains a login form with the fields "username" and "password" 
-  - Contains a link to the registration page 
+Frontpage #
+  - can be reached without logging in #
+  - contains a login form with the fields "username" and "password"  #
+  - Contains a link to the registration page #
 
 Registration page @Falster
   - Can be reached without logging in
