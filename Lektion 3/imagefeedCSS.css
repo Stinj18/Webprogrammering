@@ -1,0 +1,41 @@
+body {
+    background: #91a716;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+*{
+    font-family: cursive;
+    box-sizing: padding-box;
+    margin: 0; padding: 0;
+}
+
+header {
+    background-color: rgb(183, 225, 233);
+    height: 40px;
+    width: 100%;
+    position: relative;
+    
+}
+
+header nav {
+    position: absolute;
+    padding-left: 40%;
+}
+
+header nav a {
+    color: white;
+    font-size: 20px;
+    margin: 10px, 15px;
+    padding: 0px, 100px;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+header nav a:hover {
+    padding: 5px 2px 10px 2px;
+    background: blue;
+}
