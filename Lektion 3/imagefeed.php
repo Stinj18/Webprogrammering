@@ -5,13 +5,15 @@ include "config.php";
 <html>
 <head>
     <title> Your image feed </title>
-
+    <link rel="stylesheet" type="text/css" href="imagefeedCSS.css">
 </head>
 
 <body>
     <header id="header">
         <nav>
-            <p> Navigationbar </p> /* Indsæt en fælles navigationbar hvor man kan skifte mellem siderne */
+            <a href="./imagefeed.php">Image feed</a>
+            <a href="./uploadpage.php">Upload image</a>
+            <a href="./userlist.php">User list</a>
         </nav>
     </header>
 
