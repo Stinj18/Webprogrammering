@@ -11,19 +11,15 @@
     <p class="error"> <?php echo $GET['error']; ?></p>
       <?php } ?>
     <label> User Name </label>
-    <input type="text" name="uname" placeholder="User Name"> <br>
+    <input type="text" name="user_name" placeholder="user_name"> <br>
     <label> Password </label>
     <input type="password" name="password" placeholder="password"> <br>
 
     <button formaction="registrationpage.php"> Create a new login</button>
-    <button type="submit">Login</button>
-      
+    <div class="form-group">
+      <button class="btn btn-primary form-control" name="login_b">Login</button>
+		</div>
+    
    </form>
 </body>
 </html>
-
-
-<?php 
-include "frontpage.php";
-
-?>
