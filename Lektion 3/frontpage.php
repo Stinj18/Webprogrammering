@@ -1,50 +1,66 @@
-/*  https://www.simplilearn.com/tutorials/php-tutorial/php-login-form */
 <?php
 session_start();
 include "config.php";
 
-if(isset($_POST['uname']) && isset($_POST['password'])) {
-
-    function validate($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return data;
+if (isset($_POST['user_name']) && isset($_POST['password'])) {
+    $user_name = $_POST['user_name'];
+    $password = $_POST['password'];
+    if (empty($user_name)) {
+        echo("Location: index.php?error= Username is required");
+    }
+    elseif (empty($password)) {
+        echo "<br> Password is empty <br>";
     }
 }
 
-$uname = validate($_POST['uname']);
-$pass = validate($_POST['password']);
+$sql = "SELECT * FROM user WHERE user_name = :username AND password = :password";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':username', $user_name);
+$stmt->bindParam(':password', $password);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+<pre>
+    <?php
+print_r($result);
+?>
+</pre>
 
-if(empty($uname)){
-    header("Location: index.php?error= User Name is required");
-    exit();
-}
-else if(empty($pass)){
-    header("Location: index.php?error= Password is required");
-    exit();
-}
+<?php
+//OBS i denne del skal vi være obs på om det er user eller users og user_name eller username
+if(ISSET($_POST['login_b'])){
+    if($_POST['user_name'] != "" || $_POST['password'] != ""){
+        $user_name = $_POST['user_name'];
+        $password = $_POST['password'];
+        $sql = "SELECT * FROM user WHERE user_name = :user_name AND password= :password";
 
-$sql = "SELECT * FROM users WHERE user_name='$uname' AND password='$pass'";
-
-$result = mysqli_query($conn, $sql);
-
-if(mysqli_num_rows($result) == 1){
-    $row = mysqli_fetch_assoc($result);
-    if($row['user_name'] === "$uname" && $row['password'] === $pass) {
-        echo "Logged in";
-        $_SESSION['user_name'] = $row['user_name'];
-        $_SESSION['name'] = $row['name'];
-        $_SESSION['id'] = $row['id'];
-        header("Location: uploadpage.php");
-        exit();
+        $query = $conn->prepare($sql);
+        $query->bindParam(':user_name', $user_name);
+        $query->bindParam(':password', $password);
+        
+        //En anden måde at logge in på
+        //$sql = "SELECT * FROM user WHERE user_name = ? AND password= ?";
+        //$query = $conn->prepare($sql);
+        //$query -> execute(array($user_name, $password));
+        $query -> execute();
+        $row = $query->rowCount();
+        $fetch = $query->fetch();
+        if($row > 0) {
+            $_SESSION['user_name'] = $fetch['password'];
+            header("location: uploadpage.php");
+        } else{
+            echo "
+            <script>alert('Invalid username or password')</script>
+            <script>window.location = 'index.php'</script>
+            ";
+        }
     }
-    else {
-        header("Location: index.php?error=Incorrect User Name or Password");
-        exit();
+    else{
+        echo "
+        <script>alert('Please complete the required field!')</script>
+        <script>window.location = 'index.php'</script>
+        ";
     }
 }
-else {
-    header("Location: index.php");
-    exit();
-}
+
+
