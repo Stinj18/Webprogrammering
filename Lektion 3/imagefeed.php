@@ -1,5 +1,14 @@
 <?php
 include "config.php";
+session_start();
+
+//Fetch all users in table 
+$sql = "SELECT * FROM users;";
+
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <html>
@@ -19,7 +28,7 @@ include "config.php";
 
     <div class="imagefeed"> /*Skal gentages så mange gange som der er brugere i databasen*/
         <div id="navn">
-            <p> username </p> /* Skal hentes fra databasen?? */
+            <?php echo $_SESSION['username']; ?> <br>
         </div>
 
         <div id="image">
