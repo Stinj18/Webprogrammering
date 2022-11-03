@@ -11,7 +11,7 @@ Frontpage #
   - contains a login form with the fields "username" and "password"  #
   - Contains a link to the registration page #
 
-Registration page 
+Registration page @Falster 
   - Can be reached without logging in
   - Contains a form for registering a new user #
   - Each field in the form is checked using regex
@@ -24,9 +24,9 @@ Image feed
   - Can only be reached when logged in
   - Shows all images, headers and descriptions, from any user, along with their username
 
-User list @Falster 
+User list 
   - Can only be reached when logged in
-  - A list of all users in the system
+  - A list of all users in the system #
   
 Filer der skal være: 
 config.php #
