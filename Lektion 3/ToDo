@@ -20,11 +20,11 @@ Upload page @Malle
   - Can only be reached when logged in
   - Uploads an image, with a header and a description
 
-Image feed @Falster
+Image feed 
   - Can only be reached when logged in
   - Shows all images, headers and descriptions, from any user, along with their username
 
-User list 
+User list @Falster 
   - Can only be reached when logged in
   - A list of all users in the system
   
