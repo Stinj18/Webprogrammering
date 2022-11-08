@@ -8,3 +8,9 @@ CREATE TABLE users (
     password VARCHAR (127) 
 );
 
+CRATE TEBLE images (
+    image_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(127),
+    image LONGBLOB NOT NULL,
+    imgdescription VARCHAR(127)
+);
