@@ -32,7 +32,7 @@ if(ISSET($_POST['login_b'])){
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':username', $username);
-        //$stmt->bindParam(':password', $password);
+
         
         //En anden måde at logge in på
         //$sql = "SELECT * FROM user WHERE user_name = ? AND password= ?";
@@ -41,22 +41,27 @@ if(ISSET($_POST['login_b'])){
         $stmt -> execute();
         $row = $stmt->rowCount();
         $fetch = $stmt->fetch();
-        
-        print($username);
+        if($row > 0) {
+            if(password_verify($password, $fetch['password']) == TRUE){
+                header("location: uploadpage.php");
+            }
+            elseif(password_verify($password, $fetch['password']) == FALSE){
+                $issueUsername = "Your username is incorrect";
+            }
+        }  else{
+            $issueUsername = "Your username is incorrect";
+        }
 
-        password_verify($password, $fetch['password']);
+
+        print($username);
+        
+
+        
+    
         #Jeg tjekker her om de de stemmeroverens så det betyder at man altså kan først tjekke usernamet om det findes 
         #i databasen og hvis det ikke gør kan man give en fejl meddelse der og det samme kan man efterfølgende gøre ved password
 
-        if($row > 0) {
-            $_SESSION['username'] = $fetch['username'];
-            header("location: uploadpage.php");
-        }  else{
-             echo "
-            <script>alert('Invalid username or password')</script>
-            <script>window.location = 'frontpage.php'</script>
-            "; 
-        }
+        
     }
     else{
         echo "
