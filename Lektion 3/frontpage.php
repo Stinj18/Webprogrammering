@@ -24,28 +24,32 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC); */
 
 
 <?php
-//OBS i denne del skal vi være obs på om det er user eller users og user_name eller username
 if(ISSET($_POST['login_b'])){
     if($_POST['username'] != "" || $_POST['password'] != ""){
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $sql = "SELECT * FROM users WHERE username = :username AND password= :password";
+        $sql = "SELECT * FROM users WHERE username = :username";
 
-        $query = $conn->prepare($sql);
-        $query->bindParam(':username', $username);
-        $query->bindParam(':password', $password);
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':username', $username);
+        //$stmt->bindParam(':password', $password);
         
         //En anden måde at logge in på
         //$sql = "SELECT * FROM user WHERE user_name = ? AND password= ?";
         //$query = $conn->prepare($sql);
         //$query -> execute(array($user_name, $password));
-        $query -> execute();
-        $row = $query->rowCount();
-        $fetch = $query->fetch();
+        $stmt -> execute();
+        $row = $stmt->rowCount();
+        $fetch = $stmt->fetch();
+        
         print($username);
 
+        password_verify($password, $fetch['password']);
+        #Jeg tjekker her om de de stemmeroverens så det betyder at man altså kan først tjekke usernamet om det findes 
+        #i databasen og hvis det ikke gør kan man give en fejl meddelse der og det samme kan man efterfølgende gøre ved password
+
         if($row > 0) {
-            $_SESSION['username'] = $fetch['password'];
+            $_SESSION['username'] = $fetch['username'];
             header("location: uploadpage.php");
         }  else{
              echo "
@@ -61,5 +65,3 @@ if(ISSET($_POST['login_b'])){
         ";
     }
 }
-
-
