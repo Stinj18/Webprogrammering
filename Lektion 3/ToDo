@@ -39,10 +39,3 @@ migration.sql #
     works and that your system works with the database it creates #
     
 
-
-Security
-Data sent from client to server is sent using the proper HTTP method
-Passwords are stored properly in the database
-The server cleans any input before examining it
-Strings that build SQL statements are made in a way that avoids SQL injection
-Anything that is uploaded is cleaned to avoid cross-site scripting
